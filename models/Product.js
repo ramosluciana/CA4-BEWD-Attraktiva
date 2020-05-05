@@ -35,4 +35,4 @@ const ProductSchema = new mongoose.Schema({
 })
 
 //check if models exists. If it exists then we will use it otherwise we want to create it
-export default mongoose.models.Product || mongoose.model('Products', ProductSchema)
+export default mongoose.models.Product || mongoose.model('Product', ProductSchema)

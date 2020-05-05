@@ -20,7 +20,7 @@ function Header() {
     }
   //List of menu itens, using Linked component to be able to navigate to differents routes
   return (
-    <Menu fluid id="menu" inverted> {/* A menu element using fluid/inverte props and set an ID to it */}
+    <Menu stackable fluid id="menu" inverted> {/* A menu element using fluid/inverte props and set an ID to it */}
       <Container text> {/* Container element using text prop */}
       {/* Link to the home page */}
         <Link href="/"> 
