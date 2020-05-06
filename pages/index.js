@@ -11,7 +11,7 @@ function Home({ products }) {
     //Fetch data before the componet is displayed
 Home.getInitialProps = async () => {
   // fetch data on server
-  const url = `${baseUrl}/api/products`;;
+  const url = `${baseUrl}/api/products`;
   const response = await axios.get(url);
   return { products: response.data };
   // return response data as an object
@@ -20,4 +20,5 @@ Home.getInitialProps = async () => {
 
  export default Home;
 
+ 
 

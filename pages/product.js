@@ -11,7 +11,7 @@ function Product({ product }) {
    )
 }
 
-//Fetch produc data to the server
+//Fetch product data to the server
 Product.getInitialProps = async ({ query : { _id } }) => {
     {/* Make a request to a new endpoint that will allow to get the product from the
     products collection based on its I.D. */}
