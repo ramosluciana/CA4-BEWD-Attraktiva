@@ -1,5 +1,7 @@
 import React from 'react'
 import { Form, Input, TextArea, Button, Image, Message, Header, Icon} from 'semantic-ui-react'
+import axios from 'axios'
+import baseUrl from "../utils/baseUrl";
 
 
 const INITIAL_PRODUCT = {
@@ -13,7 +15,9 @@ const INITIAL_PRODUCT = {
     function CreateProduct() {
         const [product, setProduct] = React.useState(INITIAL_PRODUCT);
         const [mediaPreview, setMediaPreview] = React.useState("");
-        const [success, setSuccess] = React.useState(false);
+        const [success, setSuccess] = React.useState(false);  {/*create a state variable called Success which going to be set to true 
+        only when the form is submitted successfully*/}
+        const [loading, setLoading] = React.useState(false);
 
 
     //Handle changes on the product form
@@ -26,20 +30,40 @@ const INITIAL_PRODUCT = {
             setProduct(prevState => ({ ...prevState, [name]: value }));
         }
 }
-    function handleSubmit(event) {
-        event.preventDefault();
-    console.log(product);
+
+//handleimage upload + to collect the data needed to payload the post request made to the cloudinary API.
+    async function handleImageUpload(){
+        const data = new FormData() //form data construtor
+        data.append('file', product.media)
+        data.append('upload_preset', 'attraktiva')
+        data.append('cloud_name', 'dwv21pssh')
+        const response = await axios.post(process.env.CLOUDINARY_URL, data);
+        const mediaUrl = response.data.url;
+        return mediaUrl;
+    }
+
+//Handle form submit
+    async function handleSubmit(event) {
+       event.preventDefault();
+        setLoading(true);
+        const mediaUrl = await handleImageUpload();
+        console.log({ mediaUrl });
+        const url = 'http://localhost:3000/api/product';
+        const { name, price, description } = product;
+        const payload = { name, price, description, mediaUrl };
+        const response = await axios.post(url, payload);
+        console.log({ response });
+        setLoading(false);
         setProduct(INITIAL_PRODUCT);
         setSuccess(true);
   }
-
-  return (
+return (
     <>
       <Header as="h2" block>
         <Icon name="add" color="green" />
         Create New Product
       </Header>
-      <Form success={success} onSubmit={handleSubmit}>
+      <Form loading={loading} success={success} onSubmit={handleSubmit}>
         <Message
           success
           icon="check"
@@ -87,6 +111,7 @@ const INITIAL_PRODUCT = {
         />
         <Form.Field
           control={Button}
+          disabled={loading}
           color="blue"
           icon="pencil alternate"
           content="Submit"
