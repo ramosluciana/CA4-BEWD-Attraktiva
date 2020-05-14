@@ -9,7 +9,6 @@ const ProductSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true //Make sure product name is provided in order to add a new one
-
     },
 
     price: {
@@ -35,4 +34,5 @@ const ProductSchema = new mongoose.Schema({
 })
 
 //check if models exists. If it exists then we will use it otherwise we want to create it
-export default mongoose.models.Product || mongoose.model('Product', ProductSchema)
+export default mongoose.models.Product ||
+  mongoose.model("Product", ProductSchema);

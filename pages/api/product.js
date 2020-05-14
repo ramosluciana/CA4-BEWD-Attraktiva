@@ -1,6 +1,6 @@
 {/*Products API end point */}
 
-import Product from '../../models/Product';
+import Product from "../../models/Product";
 import connectDb from "../../utils/connectDb";
 
 connectDb(); //make sure to have a connection to the database before try to make a request
@@ -23,6 +23,9 @@ export default async (req, res) => {
   }
 };
 
+app.listen(port, () => debug(`Listening on port ${port}`));
+
+
 //Get request
 async function handleGetRequest(req, res) {
   const { _id } = req.query; //get id from the requested data
@@ -33,21 +36,26 @@ async function handleGetRequest(req, res) {
 async function handlePostRequest(req, res) {
   const { name, price, description, mediaUrl } = req.body;
   //If any of the product value/fields is missing, the user will get a warning message, otherwise user can proceed to create new product
-  if (!name || !price || !description || !mediaUrl) {
-    return res.status(422).send("Product missing one or more fields");
+  try {
+    if (!name || !price || !description || !mediaUrl) {
+      return res.status(422).send("Product missing one or more fields");
+    }
+    const product = await new Product({
+      name,
+      price,
+      description,
+      mediaUrl
+    }).save();
+    res.status(201).json(product);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server error in creating product");
   }
-  const product = await new Product({
-    name,
-    price,
-    description,
-    mediaUrl
-  }).save(); //allow to save to db
-  res.status(201).json(product);
 }
 
 //Delete request
 async function handleDeleteRequest(req, res) {
-  const { _id } = req.query; 
+  const { _id } = req.query;
   await Product.findOneAndDelete({ _id });
   res.status(204).json({});
 }

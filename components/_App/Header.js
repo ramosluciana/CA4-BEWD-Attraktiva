@@ -4,9 +4,9 @@ import Router, {useRouter} from "next/router";
 import NProgress from "nprogress";
 
 //Cheking router lifecycle, how it change from route to another in order to create a progress bar
-Router.OnRouteChangeStart = () => NProgress.start(); {/* Going to start progress bar and begin to change to a new route.*/}
-Router.OnRouteChangeComplete = () => NProgress.done(); {/*Finish loading the progress bar*/}
-Router.onRouteChanegError = () => NProgress.done();
+Router.onRouteChangeStart = () => NProgress.start(); {/* Going to start progress bar and begin to change to a new route.*/}
+Router.onRouteChangeComplete = () => NProgress.done(); {/*Finish loading the progress bar*/}
+Router.onRouteChangeError = () => NProgress.done();
 
 
 function Header() {
@@ -14,8 +14,7 @@ function Header() {
     const user = true; {/* variable to use on user authentication*/}
 
     //Function to provide the route to a given link
-    function isActive(route)
-    {
+    function isActive(route){
         return route === router.pathname;
     }
   //List of menu itens, using Linked component to be able to navigate to differents routes
