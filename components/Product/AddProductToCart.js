@@ -18,4 +18,3 @@ function AddProductToCart() {
 }
 
 export default AddProductToCart;
-

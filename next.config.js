@@ -7,4 +7,3 @@ module.exports = {
     STRIPE_SECRET_KEY: "<insert-stripe-secret-key>"
   }
 };
-

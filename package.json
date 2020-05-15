@@ -1,6 +1,7 @@
 {
-  "name": "react-reserve",
+  "name": "attraktiva",
   "version": "1.0.0",
+  "description": "CA-4 - BEWD",
   "main": "index.js",
   "scripts": {
     "dev": "next",
@@ -14,12 +15,11 @@
     "-": "0.0.1",
     "axios": "^0.19.0",
     "bcrypt": "^3.0.6",
-    "heroku-connect-plugin": "^0.8.0",
     "js-cookie": "^2.2.0",
     "jsonwebtoken": "^8.5.1",
-    "kill-port": "^1.6.0",
     "mongoose": "^5.6.7",
-    "next": "^9.3.6",
+    "next": "^9.4.0",
+    "node-cron": "2.0.3",
     "nookies": "^2.0.8",
     "nprogress": "^0.2.0",
     "react": "^16.8.6",
@@ -30,14 +30,5 @@
     "stripe": "^7.5.0",
     "uuid": "^3.3.2",
     "validator": "^11.1.0"
-  },
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ramosluciana/CA4-BEWD-Attraktiva.git"
-  },
-  "bugs": {
-    "url": "https://github.com/ramosluciana/CA4-BEWD-Attraktiva/issues"
-  },
-  "homepage": "https://github.com/ramosluciana/CA4-BEWD-Attraktiva#readme"
+  }
 }

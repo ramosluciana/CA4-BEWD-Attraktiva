@@ -4,7 +4,7 @@ import { Container } from "semantic-ui-react";
 import Header from "./Header";
 import HeadContent from "./HeadContent";
 
-function Layout({ children, user }) {
+function Layout({ children }) {
   return (
     <>
       <Head>
@@ -16,9 +16,9 @@ function Layout({ children, user }) {
           rel="stylesheet"
           href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css"
         />
-        <title>ReactReserve</title>
+        <title>Attraktiva</title>
       </Head>
-      <Header user={user} />
+      <Header />
       <Container text style={{ paddingTop: "1em" }}>
         {children}
       </Container>
@@ -27,4 +27,3 @@ function Layout({ children, user }) {
 }
 
 export default Layout;
-
