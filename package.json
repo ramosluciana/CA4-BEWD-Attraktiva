@@ -6,9 +6,12 @@
   "scripts": {
     "dev": "next",
     "start": "next start",
-    "build": "next build"
+    "build": "next build",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
-  "keywords": [],
+  "keywords": [
+      "heroku"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -30,5 +33,9 @@
     "stripe": "^7.5.0",
     "uuid": "^3.3.2",
     "validator": "^11.1.0"
-  }
+  },
+    "engines": {
+    "node": "10.x"
+  },
+  "heroku-run-build-script": "true"
 }
