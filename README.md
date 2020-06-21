@@ -1,9 +1,10 @@
-## CA-4 BEWD - Attraktiva Project
+Full web application stack (front end and back end)
 
-Back-end Web Development Continuous Assessment for the BSc in Computing at Dorset College.
+Attraktiva is an online shop to sell furniture, similar to Ikea, the application is composed of Home page which contains the menu and the list of products, by clicking in the specific product you are allowed to see its description and could be able to add and delete a product if you logged on the system.
 
-MERN app - an online shop which sells furniture, kind similar to Ikea.
+The application still to be improved as other components and pages have to be created.
 
-Application is composed of Home page which contains the menu and the list of products, by creating in the specific product you are allowed to see its description and could be able to add and delete a product if you logged on the system.
+Besides MongoDB, Express, React, Next.js the following technologies were also used to develop this app.
+Semantic UI react - to help with the structure and appearance of the app
+Cloudinary - to take image file uploaded on the create new product page and return it as a media URL to be store in the database.
 
-The application still in development as other components and pages has to be created.
